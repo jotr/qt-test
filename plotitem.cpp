@@ -29,17 +29,20 @@ void PlotItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     if (size == 3 && lod < 0.1) return;
     if (size == 1 && lod < 0.25) return;
     painter->setPen(Qt::NoPen);
+//    QPen pen(Qt::white, size);
+//    painter->setPen(pen);
 //    painter->setPen(QPen(Qt::black));
     painter->setBrush(Qt::white);
     QPointF p = pos();
     //FIXME:
-    QPointF pCenter(p.x(), p.y());
+//    QPointF pCenter(p.x(), p.y());
 //    QPointF pCenter(p.x(), p.y());
 //    painter->drawRect(pCenter.x(), pCenter.y(), size, size);
     painter->save();
-    painter->setTransform(Util::GenerateTranslationOnlyTransform(painter->transform(), pCenter));
+    painter->setTransform(Util::GenerateTranslationOnlyTransform(painter->transform(), p));
     // Draw your item.
-    painter->drawRect(pCenter.x(), pCenter.y(), size, size);
+    painter->drawRect(p.x(), p.y(), size, size);
+//    painter->drawPoint(p.x(), p.y());
 //    painter->drawText(p.x() + 10, p.y(), QString("Test"));
     painter->restore();
 //    qDebug() << "LOD: " << lod;

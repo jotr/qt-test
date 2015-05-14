@@ -24,7 +24,7 @@ TrackItem::TrackItem()
     text = new QGraphicsSimpleTextItem();
     text->setBrush(QBrush(Qt::black));
     QFont font;
-    font.setPointSize(11);
+    font.setPointSize(6);
     text->setFont(font);
     text->setText(QString("#1234"));
 }
@@ -69,7 +69,7 @@ void TrackItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
         painter->setPen(QPen(Qt::black));
 //        painter->setBrush(QBrush(Qt::black));
         QFont f(painter->font());
-        f.setPointSize(11);
+        f.setPointSize(9);
         painter->setFont(f);
         QString str("#12345");
         QFontMetrics metrics(f);

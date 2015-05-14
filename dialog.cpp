@@ -2,6 +2,7 @@
 #include "ui_dialog.h"
 #include "shapelib/shapefil.h"
 #include <QDebug>
+#include "plotchannelitem.h"
 #include "plotitem.h"
 #include "trackitem.h"
 #include <QtOpenGL>
@@ -90,28 +91,42 @@ Dialog::Dialog(QWidget *parent) :
     int xPos = 0;
     int yPos = 0;
 
-    int row = 100;
-    int col = 100;
+    int row = 200;
+    int col = 200;
 
     QPolygonF* poly = new QPolygonF();
     loadMapData(std::string("/Users/johan/Programmering/Qt/ViewTest/ALG_outline_SHP/ALG_outline"), poly);
     setMap(poly);
 
-//    QMatrix m;
-//    m.scale(1, -1);
+    QMatrix m;
+    m.scale(1, -1);
 
+//    for(int i = 0; i < row; i++)
+//    {
+//        for (int j = 0; j < col; j++)
+//        {
+//            PlotItem* plot = new PlotItem();  //Not actually leaking. The scene will own it
+//            plot->setPos(xPos, yPos);
+//            myView->addItem(plot);
+//            xPos += 15;
+//        }
+//        yPos += 15;
+//        xPos = 0;
+//    }
+
+    PlotChannelItem* plots = new PlotChannelItem();
     for(int i = 0; i < row; i++)
     {
         for (int j = 0; j < col; j++)
         {
-            PlotItem* plot = new PlotItem();  //Not actually leaking. The scene will own it
-            plot->setPos(xPos, yPos);
-            myView->addItem(plot);
+            plots->addPlot(QPointF(xPos, yPos));
             xPos += 15;
         }
         yPos += 15;
         xPos = 0;
     }
+    myView->addItem(plots);
+
 
     TrackItem* track = new TrackItem();
     track->setPos(2, -15);

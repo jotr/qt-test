@@ -20,13 +20,19 @@ SOURCES += main.cpp\
     shapelib/safileio.c \
     shapelib/shpopen.c \
     shapelib/shptree.c \
-    plotitem.cpp
+    plotitem.cpp \
+    plotchannelitem.cpp \
+    plotlist.cpp \
+    plot.cpp
 
 HEADERS  += dialog.h \
     trackitem.h \
     mapgraphicsview.h \
     shapelib/shapefil.h \
     plotitem.h \
-    transformutil.h
+    transformutil.h \
+    plotchannelitem.h \
+    plotlist.h \
+    plot.h
 
 FORMS    += dialog.ui

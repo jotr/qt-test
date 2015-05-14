@@ -253,6 +253,7 @@ void MapGraphicsView::drawBackground(QPainter *painter, const QRectF &rect)
         m.scale(m_scale, m_scale);
         m.translate(m_translateX, m_translateY);
         painter->setMatrix(m, true);
+        painter->setRenderHint(QPainter::Antialiasing);
         painter->drawPolygon(*map);
         //TODO: Use a polygon item and set setTransformationMode(Qt::SmoothTransformation)
     }
